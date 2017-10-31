@@ -26,7 +26,7 @@ Signature | String | 数据签名。
 
 url：http://123.207.189.56:8080/AndroidApp/register
 
-HTTP方法：不限
+HTTP方法：Post
 
 **参数**
 
