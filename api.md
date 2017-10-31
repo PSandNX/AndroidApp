@@ -1,6 +1,6 @@
 ## API 接口签名规则
 
-每次请求 API 接口时，均需要提供 4 个 HTTP Request Header，具体如下：
+每次请求 API 接口时，均需要提供 3 个 HTTP Request Header，具体如下：
 
 名称|类型|说明
 ---|---|---
