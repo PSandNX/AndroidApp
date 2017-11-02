@@ -6,25 +6,25 @@
 
 - [API方法返回值说明](#api方法返回值说明待更新)
 
-
+### 建议设置一个全局变量保存url前缀，目前的url前缀：http://139.199.193.34/AndroidApp
 
 ## API接口签名规则
 
-每次请求 API 接口时，均需要提供 3 个 HTTP Request Header，具体如下：
+每次请求API接口前，均需要请求/getToken方法获取Token。
+第一次获取Cookie时，可通过请求/getToken方法，以后每一次都通过上一次调用返回的响应头获取。
+每次请求API接口时，均需要提供 4 个 HTTP Request Header，具体如下：
 
 名称|类型|说明
 ---|---|---
-AppToken | String | 开发者识别码。
-Timestamp | String | 时间戳，从 1970 年 1 月 1 日 0 点 0 分 0 秒开始到现在的秒数。
+Token | String | 32位，服务器生成。
+Cookie | String | session识别标识。
 Signature | String | 数据签名。
 
-**Signature (数据签名)计算方法**：将AppToken（后台系统分配，暂为"1234567"）、Timestamp、"HiJoy"三个字符串按先后顺序拼接成一个字符串并进行 SHA1哈希计算。
+**Signature (数据签名)计算方法**：将Token、"HiJoy"两个字符串按先后顺序拼接成一个字符串并进行 SHA1哈希计算。
 
 ## 注册
 
 方法名：/register
-
-url：http://123.207.189.56:8080/AndroidApp/register
 
 HTTP方法：Post
 
@@ -52,6 +52,22 @@ exception | String | 错误信息，status为200时无此字段。
     注意：开发环境只支持100个注册名额，更多的需要申请。
     
 ## API方法返回值说明（待更新）
+
+## 获取Token
+
+方法名：/getToken
+
+HTTP方法：Get
+
+**参数**
+
+无
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,400,403,500。
 
 ### HTTP状态码
 
