@@ -29,7 +29,7 @@ Signature | String | 数据签名。
 
 名称|类型|说明
 ---|---|---
-Non | String | 随机数，不限位数。
+Non | String | 随机数字符串，不限位数。
 Cookie | String | session识别标识。
 Signature | String | 数据签名。
 
