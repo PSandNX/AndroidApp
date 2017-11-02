@@ -67,7 +67,10 @@ HTTP方法：Get
 
 **返回值**
 
-无
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
 
 此方法在用户关闭app时调用
 
@@ -85,7 +88,9 @@ HTTP方法：Get
 
 名称|类型|说明
 ---|---|---
-token | String | 服务器随机生成的32位字符串
+token | String | 服务器随机生成的32位字符串。
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
