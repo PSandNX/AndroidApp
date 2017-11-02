@@ -67,7 +67,25 @@ HTTP方法：Get
 
 名称|类型|说明
 ---|---|---
-status | int | 可能取值：200,400,403,500。
+token | String | 服务器随机生成的32位字符串
+
+编码格式：application/json
+
+## 销毁session
+
+方法名：/killSession
+
+HTTP方法：Get
+
+**参数**
+
+无
+
+**返回值**
+
+无
+
+此方法在用户关闭app时调用
 
 ### HTTP状态码
 
