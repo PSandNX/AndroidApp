@@ -4,6 +4,10 @@
 
 - [注册](#注册)
 
+- [销毁Session](#销毁session)
+
+- [获取Token](#获取token)
+
 - [API方法返回值说明](#api方法返回值说明待更新)
 
 ### 建议设置一个全局变量保存url前缀，目前的url前缀：http://139.199.193.34/AndroidApp
@@ -50,8 +54,22 @@ exception | String | 错误信息，status为200时无此字段。
 注册流程为：调用第三方接口进行手机验证，验证成功后调用接口进行注册。
 
     注意：开发环境只支持100个注册名额，更多的需要申请。
-    
-## API方法返回值说明（待更新）
+
+## 销毁Session
+
+方法名：/killSession
+
+HTTP方法：Get
+
+**参数**
+
+无
+
+**返回值**
+
+无
+
+此方法在用户关闭app时调用
 
 ## 获取Token
 
@@ -71,21 +89,7 @@ token | String | 服务器随机生成的32位字符串
 
 编码格式：application/json
 
-## 销毁session
-
-方法名：/killSession
-
-HTTP方法：Get
-
-**参数**
-
-无
-
-**返回值**
-
-无
-
-此方法在用户关闭app时调用
+## API方法返回值说明（待更新）
 
 ### HTTP状态码
 
