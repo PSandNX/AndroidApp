@@ -17,6 +17,9 @@
 每次请求API接口前，均需要请求/getToken方法获取Token。
 第一次获取Cookie时，可通过请求/getToken方法，以后每一次都通过上一次调用返回的响应头获取。
 第一次发送请求时，Cookie可以随便设值。
+
+**请求头**
+
 一般情况下，每次请求API接口时，均需要提供 4 个 HTTP Request Header，具体如下：
 
 名称|类型|说明
@@ -34,6 +37,13 @@ Cookie | String | session识别标识。
 Signature | String | 数据签名。
 
 **Signature (数据签名)计算方法**：一般情况下，将Token、"HiJoy"两个字符串按先后顺序拼接成一个字符串并进行 SHA1哈希计算；获取Token时，将Non、"HiJoy"两个字符串按先后顺序拼接成一个字符串并进行 SHA1哈希计算
+
+**响应头**
+
+名称|类型|说明
+---|---|---
+CheckInt | int | 可能取值：200：成功；1：请求头信息不全；2：Token失效；3：Token错误
+Cookie | String | session识别标识。
 
 ## 注册
 
