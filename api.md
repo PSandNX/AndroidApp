@@ -82,6 +82,8 @@ HTTP方法：Get
 status | int | 可能取值：200,500。
 exception | String | 错误信息，status为200时无此字段。
 
+编码格式：application/json
+
 此方法在用户关闭app时调用
 
 ## 获取Token
