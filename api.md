@@ -24,19 +24,19 @@
 
 名称|类型|说明
 ---|---|---
-Token | String | 32位，服务器生成。
+AC-Token | String | 32位，服务器生成。
 Cookie | String | session识别标识。
-Signature | String | 数据签名。
+AC-Signature | String | 数据签名。
 
 获取Token时，需要提供 3 个 HTTP Request Header，具体如下：
 
 名称|类型|说明
 ---|---|---
-Non | String | 随机数字符串，不限位数。
+AC-Non | String | 随机数字符串，不限位数。
 Cookie | String | session识别标识。
-Signature | String | 数据签名。
+AC-Signature | String | 数据签名。
 
-**Signature (数据签名)计算方法**：一般情况下，将Token、"HiJoy"两个字符串按先后顺序拼接成一个字符串并进行 SHA1哈希计算；获取Token时，将Non、"HiJoy"两个字符串按先后顺序拼接成一个字符串并进行 SHA1哈希计算
+**Signature (数据签名)计算方法**：一般情况下，将Token、"HiJoy"两个字符串按先后顺序拼接成一个字符串并进行 SHA1哈希计算；获取Token时，将Non、"HiJoy"两个字符串按先后顺序拼接成一个字符串并进行 SHA1哈希计算。注意将加密得到的字符串转化为大写形式
 
 **响应头**
 
