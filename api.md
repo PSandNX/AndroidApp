@@ -167,7 +167,7 @@ targetId | String | 接收人id。
 
 名称|类型|说明
 ---|---|---
-status | int | 可能取值：200,403,500。
+status | int | 可能取值：200,500。
 exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
