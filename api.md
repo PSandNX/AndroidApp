@@ -42,7 +42,7 @@ AC-Signature | String | 数据签名。
 
 名称|类型|说明
 ---|---|---
-CheckInt | int | 可能取值：200：成功；1：请求头信息不全；2：Token失效；3：Token错误
+CheckInt | String | 可能取值：200：成功；1：请求头信息不全；2：Token失效；3：Token错误
 Cookie | String | session识别标识。
 
 ## 注册
