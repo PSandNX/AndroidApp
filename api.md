@@ -116,6 +116,102 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
+## 发送好友请求
+
+方法名：/friendAppication
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+applicantId | String | 发送人id。
+targetId | String | 接收人id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,403,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 接受好友请求
+
+方法名：/addFriend
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+applicantId | String | 发送人id。
+targetId | String | 接收人id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,403,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 查找好友列表
+
+方法名：/findFriends
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+friendList | 对象集合 | 用户列表，包含字段：id,username,head（用户id，用户名，头像链接）
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 删除好友关系
+
+方法名：/deleteFriend
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId1 | String | 用户id。
+userId2 | String | 用户id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
 ## API方法返回值说明（待更新）
 
 ### HTTP状态码
