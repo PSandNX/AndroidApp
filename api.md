@@ -128,7 +128,7 @@ exception | String | 错误信息，status为200时无此字段。
 
 ## 发送好友请求
 
-方法名：/friendAppication
+方法名：/friendApplication
 
 HTTP方法：Post
 
