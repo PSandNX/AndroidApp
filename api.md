@@ -2,11 +2,11 @@
 
 - [API接口签名规则](#api接口签名规则)
 
-- [注册](#注册)
-
 - [销毁Session](#销毁session)
 
 - [获取Token](#获取token)
+
+- [注册](#注册)
 
 - [API方法返回值说明](#api方法返回值说明待更新)
 
@@ -14,9 +14,15 @@
 
 - [接受好友请求](#接受好友请求)
 
+- [拒绝好友请求](#拒绝好友请求)
+
+- [查找已发出的好友申请](#查找已发出的好友申请)
+
+- [查找已收到的好友申请](#查找已收到的好友申请)
+
 - [查找好友列表](#查找好友列表)
 
-- [删除好友关系](#删除好友关系)
+- [删除好友关系](#删除好友关系包括好友申请和好友拒绝记录)
 
 - [对象属性](#对象属性只列出可能用到的属性)
 
@@ -54,36 +60,6 @@ AC-Signature | String | 数据签名。
 ---|---|---
 CheckInt | String | 可能取值：200：成功；1：请求头信息不全；2：Token失效；3：Token错误
 Cookie | String | session识别标识。
-
-## 注册
-
-方法名：/register
-
-HTTP方法：Post
-
-**参数**
-
-名称|类型|说明
----|---|---
-username | String | 用户名。
-password | String | 密码，md5散列过一次。
-phone | String | 手机号，11位。
-
-编码格式：application/x-www-form-urlencoded
-
-**返回值**
-
-名称|类型|说明
----|---|---
-status | int | 可能取值：200,400,403,500。
-exception | String | 错误信息，status为200时无此字段。
-
-编码格式：application/json
-
-注册流程为：调用第三方接口进行手机验证，验证成功后调用接口进行注册。
-同一用户10秒内不能注册第二次。
-
-    注意：开发环境只支持100个注册名额，更多的需要申请。
 
 ## 销毁Session
 
@@ -126,6 +102,36 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
+## 注册
+
+方法名：/register
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+username | String | 用户名。
+password | String | 密码，md5散列过一次。
+phone | String | 手机号，11位。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200；400：信息不全，无法注册；4031：5秒内不能重复注册；4032：账号已存在，不能重复注册；4033：注册人数超过限制；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+注册流程为：调用第三方接口进行手机验证，验证成功后调用接口进行注册。
+同一用户10秒内不能注册第二次。
+
+    注意：开发环境只支持100个注册名额，更多的需要申请。
+
 ## 发送好友请求
 
 方法名：/friendApplication
@@ -145,7 +151,7 @@ targetId | String | 接收人id。
 
 名称|类型|说明
 ---|---|---
-status | int | 可能取值：200,403,500。
+status | int | 可能取值：200；4031：已经发送过请求，请等待回应；4032：已经添加过好友；500。
 exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
@@ -169,6 +175,78 @@ targetId | String | 接收人id。
 
 名称|类型|说明
 ---|---|---
+status | int | 可能取值：200；4031：请先发送好友申请；4032：已经添加过好友，不能重复添加；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 拒绝好友请求
+
+方法名：/refuseFriend
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+applicantId | String | 发送人id。
+targetId | String | 接收人id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200；4031：请先发送好友申请；4032：已经同意此申请，无法拒绝；4033：已经拒绝过此申请；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 查找已发出的好友申请
+
+方法名：/findFriendsApplicationByMe
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+applicantId | String | 用户id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+applicationByMe | 对象集合 | User列表
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 查找已收到的好友申请
+
+方法名：/findFriendsApplicationByOthers
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+applicantId | String | 用户id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+applicationByOthers | 对象集合 | User列表
 status | int | 可能取值：200,500。
 exception | String | 错误信息，status为200时无此字段。
 
@@ -198,7 +276,7 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
-## 删除好友关系
+## 删除好友关系（包括好友申请和好友拒绝记录）
 
 方法名：/deleteFriend
 
@@ -228,10 +306,10 @@ exception | String | 错误信息，status为200时无此字段。
 
 status|描述|详细解释
 ---|---|---
-200 | 成功 | 成功
-400 | 错误请求 | 该请求是无效的，详细的错误信息会说明原因
-403 | 服务器拒绝请求 | 被拒绝调用，详细的错误信息会说明原因
-500 | 服务器内部错误 | 未知错误
+200 | 成功 | 成功。
+400 | 错误请求 | 该请求是无效的，详细的错误信息会说明原因。
+403+? | 服务器拒绝请求 | 被拒绝调用，详细的错误信息会说明原因,?为数字，如4031,4032。
+500 | 服务器内部错误 | 未知错误。
 
 ## 对象属性（只列出可能用到的属性）
 
