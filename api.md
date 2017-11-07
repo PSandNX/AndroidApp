@@ -190,7 +190,7 @@ userId | String | 用户id。
 
 名称|类型|说明
 ---|---|---
-friendList | 对象集合 | 用户列表，包含字段：id,username,head（用户id，用户名，头像链接）
+friendList | 对象集合 | User列表
 status | int | 可能取值：200,500。
 exception | String | 错误信息，status为200时无此字段。
 
@@ -230,3 +230,15 @@ status|描述|详细解释
 400 | 错误请求 | 该请求是无效的，详细的错误信息会说明原因
 403 | 服务器拒绝请求 | 被拒绝调用，详细的错误信息会说明原因
 500 | 服务器内部错误 | 未知错误
+
+## 对象属性（只列出可能用到的属性）
+
+### User
+
+名称|类型|说明
+---|---|---
+id | String | 用户编号，手机号，融云账号。
+username | String | 用户名。
+token | String | 融云token。
+email | String | 邮箱。
+head | String | 头像。
