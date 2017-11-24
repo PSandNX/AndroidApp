@@ -26,6 +26,26 @@
 
 - [删除好友关系](#删除好友关系包括好友申请和好友拒绝记录)
 
+- [更新任务描述图](#更新任务描述图)
+
+- [发布任务](#发布任务)
+
+- [删除任务](#删除任务)
+
+- [领取任务](#领取任务)
+
+- [放弃任务](#放弃任务)
+
+- [更新类别、赏金、简介、详情](#更新类别、赏金、简介、详情)
+
+- [查找已发布的任务](#查找已发布的任务)
+
+- [查找已领取的任务](#查找已领取的任务)
+
+- [根据主键查找任务](#根据主键查找任务)
+
+- [根据类别查找任务，一次五篇](#根据类别查找任务，一次五篇)
+
 ### 建议设置一个全局变量保存url前缀，目前的url前缀：http://139.199.193.34/AndroidApp
 
 ## API接口签名规则
@@ -300,6 +320,252 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
+
+## 更新任务描述图
+
+方法名：/updateTaskImages
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+taskImages | MultipartFile | 图片组，png或jpg。
+userId | String | 用户id。
+taskId | int | 任务id。
+
+编码格式：multipart/form-data
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 发布任务
+
+方法名：/addTask
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+task | Task | 必需字段：userId,category,value,summary,details
+
+编码格式：application/json
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,403:信息不全，拒绝请求,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+如果有描述图，先调用此方法再调用updateTaskImages方法。
+
+## 删除任务
+
+方法名：/deleteTask
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+taskId | int | 任务id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 领取任务
+
+方法名：/receiveTask
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+taskId | int | 任务id。
+receivedUserId | String | 任务领取者id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 放弃任务
+
+方法名：/abandonTask
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+taskId | int | 任务id。
+receivedUserId | String | 任务领取者id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 更新类别、赏金、简介、详情
+
+方法名：/updateTaskInf
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+task | Task | 必需字段：category,value,summary,details中一个或多个
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 查找已发布的任务
+
+方法名：/findReleasedTask
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+releasedTasks | Task | Task数组，已发布的任务。
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 查找已领取的任务
+
+方法名：/findReceivedTask
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+receivedId | String | 任务领取者id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+receivedTasks | Task | Task数组，已领取的任务。
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 根据主键查找任务
+
+方法名：/findTask
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+taskId | int | 任务id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+task | Task | 任务。
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 根据类别查找任务，一次五篇
+
+方法名：/findTaskByCategory
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+pageId | int | 页数，最小为1。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+tasks | Task | Task数组，任务组。
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+
 ## API方法返回值说明（待更新）
 
 ### HTTP状态码
@@ -318,7 +584,22 @@ status|描述|详细解释
 名称|类型|说明
 ---|---|---
 id | String | 用户编号，手机号，融云账号。
+password | String | 密码。
 username | String | 用户名。
 token | String | 融云token。
 email | String | 邮箱。
 head | String | 头像。
+
+### Task
+名称|类型|说明
+---|---|---
+userId | String | 用户编号，手机号，融云账号。
+taskId | int | 任务编号。
+receivedUserId | String | 任务领取者id。
+category | String | 类别。
+time | long | 发布时间。
+status | int | 0代表未被接受，1代表已被接受。
+value | float | 悬赏金。
+summary | String | 简介。
+image | String | 图片组链接，用分号隔开，如"/a/1;/a/2;"。
+details | String | 详情。
