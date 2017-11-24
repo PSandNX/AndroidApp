@@ -368,6 +368,7 @@ status | int | 可能取值：200,403:信息不全，拒绝请求,500。
 exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
+
 如果有描述图，先调用此方法再调用updateTaskImages方法。
 
 ## 删除任务
