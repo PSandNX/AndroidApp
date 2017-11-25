@@ -346,6 +346,8 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
+如果用户删除任务描述图，给
+
 ## 发布任务
 
 方法名：/addTask
@@ -356,7 +358,7 @@ HTTP方法：Post
 
 名称|类型|说明
 ---|---|---
-task | Task | 必需字段：userId,category,value,summary,details
+task | Task | 必需字段：userId,category,value,summary,details；不能为空，NULL
 
 编码格式：application/json
 
@@ -455,7 +457,7 @@ HTTP方法：Post
 
 名称|类型|说明
 ---|---|---
-task | Task | 必需字段：category,value,summary,details中一个或多个
+task | Task | 必需字段：category,value,summary,details；不能为空，NULL
 
 编码格式：application/x-www-form-urlencoded
 
@@ -467,6 +469,8 @@ status | int | 可能取值：200,500。
 exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
+
+每次调用此方法后如果还有描述图（不管描述图是否有增删，只要还有一张），需要再调用updateTaskImages方法
 
 ## 查找已发布的任务
 
