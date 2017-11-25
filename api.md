@@ -363,7 +363,7 @@ HTTP方法：Post
 
 名称|类型|说明
 ---|---|---
-imagesId | int | int型数组，图片链接的次序，即image字符串split之后得到的字符串组标号，0开始。
+imagesId | int | int型数组，图片链接的次序，即image字符串split之后得到的字符串组标号，0开始。包含用户选择删除后剩下的图片次序。
 userId | String | 用户id。
 taskId | int | 任务id。
 
