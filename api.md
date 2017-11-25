@@ -12,6 +12,8 @@
 
 - [对象属性](#对象属性只列出可能用到的属性)
 
+### 好友关系
+
 - [发送好友请求](#发送好友请求)
 
 - [接受好友请求](#接受好友请求)
@@ -26,7 +28,11 @@
 
 - [删除好友关系](#删除好友关系包括好友申请和好友拒绝记录)
 
-- [更新任务描述图](#更新任务描述图)
+### 任务
+
+- [添加任务描述图](#添加任务描述图)
+
+- [删除任务描述图](#删除任务描述图)
 
 - [发布任务](#发布任务)
 
@@ -321,9 +327,9 @@ exception | String | 错误信息，status为200时无此字段。
 编码格式：application/json
 
 
-## 更新任务描述图
+## 添加任务描述图
 
-方法名：/updateTaskImages
+方法名：/addTaskImages
 
 HTTP方法：Post
 
@@ -341,12 +347,38 @@ taskId | int | 任务id。
 
 名称|类型|说明
 ---|---|---
+size | int | 上传成功的图片数。
 status | int | 可能取值：200,500。
 exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
-如果用户删除任务描述图，给
+## 删除任务描述图
+
+方法名：/deleteTaskImages
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+imagesId | int | int型数组，图片链接的次序，即image字符串split之后得到的字符串组标号，0开始。
+userId | String | 用户id。
+taskId | int | 任务id。
+
+编码格式：application/x-www-form-urlencoded
+
+如果用户在编辑完成时，既有删除操作又有添加操作，先调用此方法删除之前已上传的图片中用户选择删除的，再调用addTaskImages方法上传用户新添加的图片。
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
 
 ## 发布任务
 
@@ -366,12 +398,13 @@ task | Task | 必需字段：userId,category,value,summary,details；不能为�
 
 名称|类型|说明
 ---|---|---
+taskId | int | 任务id。
 status | int | 可能取值：200,403:信息不全，拒绝请求,500。
 exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
-如果有描述图，先调用此方法再调用updateTaskImages方法。
+如果有描述图，先调用此方法再调用addTaskImages方法。
 
 ## 删除任务
 
@@ -459,7 +492,7 @@ HTTP方法：Post
 ---|---|---
 task | Task | 必需字段：category,value,summary,details；不能为空，NULL
 
-编码格式：application/x-www-form-urlencoded
+编码格式：application/json
 
 **返回值**
 
