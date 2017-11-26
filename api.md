@@ -131,6 +131,8 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
+## 用户
+
 ## 注册
 
 方法名：/register
@@ -160,6 +162,54 @@ exception | String | 错误信息，status为200时无此字段。
 同一用户10秒内不能注册第二次。
 
     注意：开发环境只支持100个注册名额，更多的需要申请。
+
+## 查找用户信息
+
+方法名：/findUserById
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+id | String | 用户id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+user | User | 用户信息。
+status | int | 可能取值：200，500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 查找所有校区
+
+方法名：/findCampuses
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+campus | String | 用户搜索时输入的信息。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+campuses | String | 匹配的校区信息。
+status | int | 可能取值：200，500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
 
 ## 好友关系
 
