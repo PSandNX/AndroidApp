@@ -748,7 +748,7 @@ HTTP方法：Post
 
 名称|类型|说明
 ---|---|---
-article | Article | 必需字段：userId,articleId,content,time,image;不为空，不为NULL
+article | Article | 必需字段：userId,content,time,image;不为空，不为NULL
 
 编码格式：application/json 
 
@@ -885,6 +885,308 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json 
 
+## 朋友圈收藏
+
+## 添加收藏
+
+方法名：/addArticleCollection
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+articleCollection | ArticleCollection | 必需字段：articleUserId，articleId，userId；不能为空，NULL
+
+编码格式：application/json
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,403:信息不全，拒绝请求,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 删除收藏
+
+方法名：/deleteArticleCollection
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+articleUserId | String | 说说发布者id。
+userId | String | 收藏者id。
+articleId | String | 说说id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 查找收藏状态
+
+方法名：/findArticleCollection
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+articleUserId | String | 说说发布者id。
+userId | String | 收藏者id。
+articleId | String | 说说id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+check | boolean | 如果用户收藏了说说，为true，否则为false。
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 朋友圈评论
+
+## 发布评论
+
+方法名：/addComment
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+comment | Comment | 必需字段:articleUserId,articleId,commentUserId,content;不为空，不为NULL
+
+编码格式：application/json
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+commentId | int | 评论id。
+status | int | 可能取值：200,403：信息不全，拒绝请求，500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 删除评论
+
+方法名：/deleteComment
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+articleUserId | String | 说说发布者id。
+articleId | int | 说说id。
+commentUserId | String | 评论发布者id。
+commentId | int | 评论id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 查找说说所有的评论
+
+方法名：/findCommentsByArticle
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+articleUserId | String | 说说发布者id。
+articleId | int | 说说id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+comments | Comment | 对象集合，说说的所有评论。
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 查找单条评论
+
+方法名：/findComment
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+articleUserId | String | 说说发布者id。
+articleId | int | 说说id。
+commentUserId | String | 评论发布者id。
+commentId | int | 评论id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+comment | Comment | 评论。
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 地址
+
+## 添加地址
+
+方法名：/addAddress
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+address | Address | 必需字段:userId,address,name,contactWay,contactNumber;不为空，不为NULL
+
+编码格式：application/json
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+addressId | int | 地址id。
+status | int | 可能取值：200,403：信息不全，拒绝请求,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 删除地址
+
+方法名：/deleteAddress
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+addressId | int | 地址id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 更新地址
+
+方法名：/updateAddress
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+address | Address | 必需字段:userId,addressId,address,name,contactWay,contactNumber;不为空，不为NULL
+
+编码格式：application/json
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,403：信息不全，拒绝请求,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 查找单条地址
+
+方法名：/findAddress
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+addressId | int | 地址id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+address | Address | 地址。
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 查找用户所有地址
+
+方法名：/findAddresses
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+addresses | Address | 对象集合，用户所有的地址。
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
 ## API方法返回值说明（待更新）
 
 ### HTTP状态码
@@ -939,3 +1241,30 @@ articleId | int | 说说id。
 content | String | 文字内容。
 image | String | 图片组链接，用分号隔开，如"/a/1;/a/2;"。
 time | long | 发布时间。
+
+### ArticleCollection
+名称|类型|说明
+---|---|---
+articleUserId | String | 说说发布者id。
+articleId | int | 说说id。
+userId | String | 收藏者id。
+
+### Comment
+名称|类型|说明
+---|---|---
+articleUserId | String | 说说发布者id。
+articleId | int | 说说id。
+commentUserId | String | 评论发布者id。
+commentId | int | 评论id。
+content | String | 评论内容。
+time | long | 发布时间。
+
+### Address
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+addressId | int | 地址id。
+address | String | 地址。
+name | String | 联系人姓名。
+contactWay | String | 联系方式。
+contactNumber | String | 联系号码。
