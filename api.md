@@ -52,6 +52,9 @@
 
 - [根据类别查找任务，一次五篇](#根据类别查找任务一次五篇)
 
+### 任务收藏
+
+
 ### 建议设置一个全局变量保存url前缀，目前的url前缀：http://139.199.193.34/AndroidApp
 
 ## API接口签名规则
@@ -157,6 +160,8 @@ exception | String | 错误信息，status为200时无此字段。
 同一用户10秒内不能注册第二次。
 
     注意：开发环境只支持100个注册名额，更多的需要申请。
+
+## 好友关系
 
 ## 发送好友请求
 
@@ -326,6 +331,7 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
+## 任务
 
 ## 添加任务描述图
 
@@ -603,6 +609,281 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
+## 任务收藏
+
+## 添加收藏
+
+方法名：/addTaskCollection
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+taskCollection | TaskCollection | 必需字段：taskUserId，userId，taskId；不能为空，NULL
+
+编码格式：application/json
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,403:信息不全，拒绝请求,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 删除收藏
+
+方法名：/deleteTaskCollection
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+taskUserId | String | 任务发布者id。
+userId | String | 收藏者id。
+taskId | String | 任务id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 查找收藏状态
+
+方法名：/findTaskCollection
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+taskUserId | String | 任务发布者id。
+userId | String | 收藏者id。
+taskId | String | 任务id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+check | boolean | 如果用户收藏了任务，为true，否则为false。
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 朋友圈
+
+## 添加说说描述图
+
+方法名：/addArticleImages
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+articleImages | String | 图片组，png或jpg。
+userId | String | 用户id。
+articleId | int | 说说id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+size | int | 上传成功的图片数。
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 删除说说描述图
+
+方法名：/deleteArticleImages
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+imagesId | String | int型数组，图片链接的次序，即image字符串split之后得到的字符串组标号，0开始。包含用户选择删除后剩下的图片次序。
+userId | String | 用户id。
+articleId | int | 说说id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 发布说说
+
+方法名：/addArticle
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+article | Article | 必需字段：userId,articleId,content,time,image;不为空，不为NULL
+
+编码格式：application/json 
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+articleId | int | 说说id。
+status | int | 可能取值：200,403：信息不全，拒绝请求,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json 
+
+## 删除说说
+
+方法名：/deleteArticle
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+articleId | int | 说说id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json 
+
+## 更新说说文字内容
+
+方法名：/updateArticleInf
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+articleId | int | 说说id。
+content | String | 说说文字内容。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,403：信息不全，拒绝请求,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json 
+
+## 查找单篇说说
+
+方法名：/findArticle
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+articleId | int | 说说id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+article | Article | 说说。
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json 
+
+## 查找用户已发布的说说
+
+方法名：/findArticleByUserId
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+articles | Article | Article集合，用户已发布的说说。
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json 
+
+## 查找校区内的说说，一次五篇
+
+方法名：/findArticleByCampus
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+campus | String | 用户搜索时输入的信息。
+pageId | int | 页数，最小为1。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+articles | Article | Article集合，校区内发布的说说。
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json 
 
 ## API方法返回值说明（待更新）
 
@@ -627,6 +908,7 @@ username | String | 用户名。
 token | String | 融云token。
 email | String | 邮箱。
 head | String | 头像。
+campus | String | 校区。
 
 ### Task
 名称|类型|说明
@@ -641,3 +923,19 @@ value | float | 悬赏金。
 summary | String | 简介。
 image | String | 图片组链接，用分号隔开，如"/a/1;/a/2;"。
 details | String | 详情。
+
+### TaskCollection
+名称|类型|说明
+---|---|---
+taskUserId | String | 任务发布者id。
+userId | String | 收藏者id。
+taskId | String | 任务id。
+
+### Article
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+articleId | int | 说说id。
+content | String | 文字内容。
+image | String | 图片组链接，用分号隔开，如"/a/1;/a/2;"。
+time | long | 发布时间。
