@@ -452,7 +452,7 @@ HTTP方法：Post
 
 名称|类型|说明
 ---|---|---
-taskImages | MultipartFile | 图片组，png或jpg。
+taskImages | MultipartFile | 图片组，png或jpg，必须是用户新添加的图片（之前未上传到服务器的）。
 userId | String | 用户id。
 taskId | int | 任务id。
 
@@ -478,8 +478,8 @@ HTTP方法：Post
 
 名称|类型|说明
 ---|---|---
-remainingImages | String | 剩余的图片链接，分号隔开，如："15157576980101511622273271.png;15157576980111511622273271.png;"。
-deletedImages | String | 删除的图片链接，分号隔开。
+remainingImages | String | 剩余的图片链接，分号隔开，如："15157576980101511622273271.png;15157576980111511622273271.png;"，必须是用户之前已上传到服务器的。
+deletedImages | String | 删除的图片链接，分号隔开，必须是用户之前已上传到服务器的。
 userId | String | 用户id。
 taskId | int | 任务id。
 
@@ -807,7 +807,7 @@ HTTP方法：Post
 
 名称|类型|说明
 ---|---|---
-articleImages | String | 图片组，png或jpg。
+articleImages | String | 图片组，png或jpg，必须是用户新添加的图片（之前未上传到服务器的）。
 userId | String | 用户id。
 articleId | int | 说说id。
 
@@ -833,12 +833,14 @@ HTTP方法：Post
 
 名称|类型|说明
 ---|---|---
-remainingImages | String | 剩余的图片链接，分号隔开，如："15157576980101511622273271.png;15157576980111511622273271.png;"。
-deletedImages | String | 删除的图片链接，分号隔开。
+remainingImages | String | 剩余的图片链接，分号隔开，如："15157576980101511622273271.png;15157576980111511622273271.png;"，必须是用户之前已上传到服务器的。
+deletedImages | String | 删除的图片链接，分号隔开，必须是用户之前已上传到服务器的。
 userId | String | 用户id。
 articleId | int | 说说id。
 
 编码格式：application/x-www-form-urlencoded
+
+如果用户在编辑完成时，既有删除操作又有添加操作，先调用此方法删除之前已上传的图片中用户选择删除的，再调用addArticleImages方法上传用户新添加的图片。
 
 **返回值**
 
