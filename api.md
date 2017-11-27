@@ -264,7 +264,7 @@ campus | String | 用户搜索时输入的信息。
 
 名称|类型|说明
 ---|---|---
-campuses | String | 匹配的校区信息。
+campuses | String | String集合，匹配的校区信息。
 status | int | 可能取值：200，500。
 exception | String | 错误信息，status为200时无此字段。
 
