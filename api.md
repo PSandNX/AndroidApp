@@ -1324,6 +1324,8 @@ token | String | 融云token。
 email | String | 邮箱。
 head | String | 头像。
 campus | String | 校区。
+addressId | int | 常用地址id。
+serviceIds | String | 服务编号组，用分号隔开，如"1;2;3;"。
 
 ### Task
 名称|类型|说明
@@ -1338,6 +1340,7 @@ value | float | 悬赏金。
 summary | String | 简介。
 image | String | 图片组链接，用分号隔开，如"/a/1;/a/2;"。
 details | String | 详情。
+addressId | int | 地址id。
 
 ### TaskCollection
 名称|类型|说明
