@@ -478,7 +478,8 @@ HTTP方法：Post
 
 名称|类型|说明
 ---|---|---
-imagesId | int | int型数组，图片链接的次序，即image字符串split之后得到的字符串组标号，0开始。包含用户选择删除后剩下的图片次序。
+remainingImages | String | 剩余的图片链接，分号隔开，如："15157576980101511622273271.png;15157576980111511622273271.png;"。
+deletedImages | String | 删除的图片链接，分号隔开。
 userId | String | 用户id。
 taskId | int | 任务id。
 
@@ -832,7 +833,8 @@ HTTP方法：Post
 
 名称|类型|说明
 ---|---|---
-imagesId | String | int型数组，图片链接的次序，即image字符串split之后得到的字符串组标号，0开始。包含用户选择删除后剩下的图片次序。
+remainingImages | String | 剩余的图片链接，分号隔开，如："15157576980101511622273271.png;15157576980111511622273271.png;"。
+deletedImages | String | 删除的图片链接，分号隔开。
 userId | String | 用户id。
 articleId | int | 说说id。
 
