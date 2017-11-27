@@ -1341,6 +1341,7 @@ summary | String | 简介。
 image | String | 图片组链接，用分号隔开，如"/a/1;/a/2;"。
 details | String | 详情。
 addressId | int | 地址id。
+finish | int | 0代表未完成，1代表已完成
 
 ### TaskCollection
 名称|类型|说明
@@ -1384,3 +1385,15 @@ address | String | 地址。
 name | String | 联系人姓名。
 contactWay | String | 联系方式。
 contactNumber | String | 联系号码。
+
+### Service
+名称|类型|说明
+---|---|---
+serviceId | int | 服务id。
+name | String | 服务名称。
+summary | String | 服务简介。
+icon | String | 服务图标。
+developer | String | 开发者。
+school | String | 学校。
+category | String | 服务类别。
+usedNumber | int | 使用量，热度。
