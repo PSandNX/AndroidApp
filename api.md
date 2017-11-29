@@ -704,7 +704,7 @@ HTTP方法：Post
 
 名称|类型|说明
 ---|---|---
-userId | String | 用户id。
+category | String | 用户id。
 pageId | int | 页数，最小为1。
 
 编码格式：application/x-www-form-urlencoded
