@@ -24,7 +24,7 @@
 
 - [查找用户订阅的服务](#查找用户订阅的服务)
 
-- [根据serviceId查找服务](#根据serviceId查找服务)
+- [根据serviceId查找服务](#根据serviceid查找服务)
 
 - [根据name查找服务](#根据name查找服务)
 
