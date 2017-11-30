@@ -1537,7 +1537,7 @@ token | String | 融云token。
 email | String | 邮箱。
 head | String | 头像。
 campus | String | 校区。
-addressId | int | 常用地址id。
+addressId | int | 常用地址id，如果暂无常驻地址，此字段值为0。
 serviceIds | String | 服务编号组，用分号隔开，如"1;2;3;"。
 wallet | float | 账户余额。
 
