@@ -14,6 +14,8 @@
 
 - [注册](#注册)
 
+- [登录](#登录)
+
 - [查找用户信息](#查找用户信息)
 
 - [查找所有校区](#查找所有校区)
@@ -71,6 +73,8 @@
 - [根据主键查找任务](#根据主键查找任务)
 
 - [根据类别查找任务，一次五篇](#根据类别查找任务一次五篇)
+
+- [确认任务完成](#确认任务完成)
 
 ### 任务收藏
 
@@ -235,6 +239,30 @@ exception | String | 错误信息，status为200时无此字段。
 同一用户10秒内不能注册第二次。
 
     注意：开发环境只支持100个注册名额，更多的需要申请。
+
+## 登录
+
+方法名：/login
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+phone | String | 用户id。
+password | String | 密码，md5散列过一次。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200：验证成功；4031：用户名或密码不能为空；4032：账号不存在，请先注册；4033：密码错误；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
 
 ## 查找用户信息
 
@@ -865,7 +893,7 @@ HTTP方法：Post
 
 名称|类型|说明
 ---|---|---
-category | String | 用户id。
+category | String | 类别。
 pageId | int | 页数，最小为1。
 
 编码格式：application/x-www-form-urlencoded
@@ -876,6 +904,30 @@ pageId | int | 页数，最小为1。
 ---|---|---
 tasks | Task | Task数组，任务组。
 status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 确认任务完成
+
+方法名：/finishTask
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+taskId | int | 任务id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200,403：信息不全，拒绝请求；500。
 exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
