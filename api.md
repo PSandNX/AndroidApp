@@ -1539,6 +1539,7 @@ head | String | 头像。
 campus | String | 校区。
 addressId | int | 常用地址id。
 serviceIds | String | 服务编号组，用分号隔开，如"1;2;3;"。
+wallet | float | 账户余额。
 
 ### Task
 名称|类型|说明
@@ -1548,13 +1549,12 @@ taskId | int | 任务编号。
 receivedUserId | String | 任务领取者id。
 category | String | 类别。
 time | long | 发布时间。
-status | int | 0代表未被接受，1代表已被接受。
+status | int | 0代表未被接受，1代表正在进行，2代表已完成。
 value | float | 悬赏金。
 summary | String | 简介。
 image | String | 图片组链接，用分号隔开，如"/a/1;/a/2;"。
 details | String | 详情。
 addressId | int | 地址id。
-finish | int | 0代表未完成，1代表已完成
 
 ### TaskCollection
 名称|类型|说明
@@ -1586,6 +1586,7 @@ articleUserId | String | 说说发布者id。
 articleId | int | 说说id。
 commentUserId | String | 评论发布者id。
 commentId | int | 评论id。
+toUserId | String | 所回复的用户的id，如果此评论不是回复，此字段为null
 content | String | 评论内容。
 time | long | 发布时间。
 
