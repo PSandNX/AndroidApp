@@ -1586,7 +1586,7 @@ articleUserId | String | 说说发布者id。
 articleId | int | 说说id。
 commentUserId | String | 评论发布者id。
 commentId | int | 评论id。
-toUserId | String | 所回复的用户的id，如果此评论不是回复，此字段为null
+toUserId | String | 所回复的用户的id，如果此评论不是回复，此字段为null或""
 content | String | 评论内容。
 time | long | 发布时间。
 
