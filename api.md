@@ -18,6 +18,8 @@
 
 - [查找所有校区](#查找所有校区)
 
+### 服务
+
 ### 好友关系
 
 - [发送好友请求](#发送好友请求)
@@ -269,6 +271,129 @@ status | int | 可能取值：200，500。
 exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
+
+## 服务
+
+## 更新用户订阅的服务
+
+方法名：/updateUserServiceIds
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+serviceIds | String | 用户订阅的服务的id组，用";"隔开，如"1;2;3;"。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200；403：信息不全，拒绝请求；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 查找用户订阅的服务
+
+方法名：/findServicesByUserId
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+services | Service | Service集合，用户订阅的服务。
+status | int | 可能取值：200；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 根据serviceId查找服务
+
+方法名：/findServiceByServiceId
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+serviceId | int | 服务id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+service | Service | 服务。
+status | int | 可能取值：200；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 根据name查找服务
+
+方法名：/findServicesByName
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+name | String | 服务名称。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+services | Service | Service集合，服务。
+status | int | 可能取值：200；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 根据category查找服务
+
+方法名：/findServicesByCategory
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+category | String | 服务类别。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+services | Service | Service集合，服务。
+status | int | 可能取值：200；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
 
 ## 好友关系
 
