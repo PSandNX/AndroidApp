@@ -74,6 +74,8 @@
 
 - [根据类别查找任务，一次五篇](#根据类别查找任务一次五篇)
 
+- [根据完成状态查找任务，一次五篇](#根据完成状态查找任务一次五篇)
+
 - [确认任务完成](#确认任务完成)
 
 ### 任务收藏
@@ -894,6 +896,31 @@ HTTP方法：Post
 名称|类型|说明
 ---|---|---
 category | String | 类别。
+pageId | int | 页数，最小为1。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+tasks | Task | Task数组，任务组。
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 根据完成状态查找任务，一次五篇
+
+方法名：/findTaskByStatus
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+status | int | 完成状态，0：未完成，1：进行中，2：已完成。
 pageId | int | 页数，最小为1。
 
 编码格式：application/x-www-form-urlencoded
