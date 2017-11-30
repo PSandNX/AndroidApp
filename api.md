@@ -18,6 +18,8 @@
 
 - [查找所有校区](#查找所有校区)
 
+- [更新用户的常驻地址](#更新用户的常驻地址)
+
 ### 服务
 
 - [更新用户订阅的服务](#更新用户订阅的服务)
@@ -278,6 +280,30 @@ campus | String | 用户搜索时输入的信息。
 ---|---|---
 campuses | String | String集合，匹配的校区信息。
 status | int | 可能取值：200，500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 更新用户的常驻地址
+
+方法名：/updateUserAddressId
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+addressId | int | 地址id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200，403：信息不全，拒绝请求；500。
 exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
