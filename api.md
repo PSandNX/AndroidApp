@@ -22,6 +22,8 @@
 
 - [更新用户的常驻地址](#更新用户的常驻地址)
 
+- [转账](#转账)
+
 ### 服务
 
 - [更新用户订阅的服务](#更新用户订阅的服务)
@@ -333,7 +335,33 @@ addressId | int | 地址id。
 
 名称|类型|说明
 ---|---|---
-status | int | 可能取值：200，403：信息不全，拒绝请求；500。
+status | int | 可能取值：200；403：信息不全，拒绝请求；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 转账
+
+方法名：/transferAccounts
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 转账发起人id。
+toUserId | String | 转账目标id。
+transferAmount | BigDecimal | 转账金额。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+wallet | BigDecimal | 账户余额。
+status | int | 可能取值：200；4031：信息不全，拒绝请求；4032：转账发起人或转账目标不存在；500。
 exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
@@ -1566,7 +1594,7 @@ head | String | 头像。
 campus | String | 校区。
 addressId | int | 常用地址id，如果暂无常驻地址，此字段值为0。
 serviceIds | String | 服务编号组，用分号隔开，如"1;2;3;"。
-wallet | float | 账户余额。
+wallet | BigDecimal | 账户余额。
 
 ### Task
 名称|类型|说明
@@ -1577,7 +1605,7 @@ receivedUserId | String | 任务领取者id。
 category | String | 类别。
 time | long | 发布时间。
 status | int | 0代表未被接受，1代表正在进行，2代表已完成。
-value | float | 悬赏金。
+value | BigDecimal | 悬赏金。
 summary | String | 简介。
 image | String | 图片组链接，用分号隔开，如"/a/1;/a/2;"。
 details | String | 详情。
