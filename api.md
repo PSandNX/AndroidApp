@@ -1184,6 +1184,7 @@ articleId | int | 说说id。
 名称|类型|说明
 ---|---|---
 article | Article | 说说。
+comments | Comment | 评论集合。
 status | int | 可能取值：200,500。
 exception | String | 错误信息，status为200时无此字段。
 
@@ -1207,7 +1208,7 @@ userId | String | 用户id。
 
 名称|类型|说明
 ---|---|---
-articles | Article | Article集合，用户已发布的说说。
+articlesAndComments | Map | Map集合，每个Map元素包含："article"：Article对象，说说；"comments":Comment对象集合，说说对应的评论。
 status | int | 可能取值：200,500。
 exception | String | 错误信息，status为200时无此字段。
 
@@ -1232,7 +1233,7 @@ pageId | int | 页数，最小为1。
 
 名称|类型|说明
 ---|---|---
-articles | Article | Article集合，校区内发布的说说。
+articlesAndComments | Map | Map集合，每个Map元素包含："article"：Article对象，说说；"comments":Comment对象集合，说说对应的评论。
 status | int | 可能取值：200,500。
 exception | String | 错误信息，status为200时无此字段。
 
