@@ -923,7 +923,7 @@ HTTP方法：Post
 名称|类型|说明
 ---|---|---
 category | String | 类别。
-userId | String | 用户id。
+campus | String | 校区。
 status | int | 状态码。0代表未被接受，1代表正在进行，2代表已完成。
 pageId | int | 页数，最小为1。
 
