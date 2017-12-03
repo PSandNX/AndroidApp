@@ -299,11 +299,7 @@ HTTP方法：Post
 
 **参数**
 
-名称|类型|说明
----|---|---
-campus | String | 用户搜索时输入的信息。
-
-编码格式：application/x-www-form-urlencoded
+无
 
 **返回值**
 
