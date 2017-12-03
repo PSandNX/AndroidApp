@@ -66,7 +66,7 @@
 
 - [放弃任务](#放弃任务)
 
-- [更新类别、赏金、简介、详情](#更新类别赏金简介详情)
+- [更新类别、赏金、简介、详情、地址](#更新类别赏金简介详情地址)
 
 - [查找已发布的任务](#查找已发布的任务)
 
@@ -74,9 +74,7 @@
 
 - [根据主键查找任务](#根据主键查找任务)
 
-- [根据类别查找任务，一次五篇](#根据类别查找任务一次五篇)
-
-- [根据完成状态查找任务，一次五篇](#根据完成状态查找任务一次五篇)
+- [根据校区、类别、状态查找任务，一次五篇](#根据校区类别状态查找任务一次五篇)
 
 - [确认任务完成](#确认任务完成)
 
@@ -227,6 +225,7 @@ HTTP方法：Post
 username | String | 用户名。
 password | String | 密码，md5散列过一次。
 phone | String | 手机号，11位。
+campus | String | 校区。
 
 编码格式：application/x-www-form-urlencoded
 
@@ -815,7 +814,7 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
-## 更新类别、赏金、简介、详情
+## 更新类别、赏金、简介、详情、地址
 
 方法名：/updateTaskInf
 
@@ -825,7 +824,7 @@ HTTP方法：Post
 
 名称|类型|说明
 ---|---|---
-task | Task | 必需字段：category,value,summary,details；不能为空，NULL
+task | Task | 必需字段：category,value,summary,details,addressId；不能为空，NULL
 
 编码格式：application/json
 
@@ -913,9 +912,9 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
-## 根据类别查找任务，一次五篇
+## 根据校区、类别、状态查找任务，一次五篇
 
-方法名：/findTaskByCategory
+方法名：/findTasks
 
 HTTP方法：Post
 
@@ -924,31 +923,8 @@ HTTP方法：Post
 名称|类型|说明
 ---|---|---
 category | String | 类别。
-pageId | int | 页数，最小为1。
-
-编码格式：application/x-www-form-urlencoded
-
-**返回值**
-
-名称|类型|说明
----|---|---
-tasks | Task | Task数组，任务组。
-status | int | 可能取值：200,500。
-exception | String | 错误信息，status为200时无此字段。
-
-编码格式：application/json
-
-## 根据完成状态查找任务，一次五篇
-
-方法名：/findTaskByStatus
-
-HTTP方法：Post
-
-**参数**
-
-名称|类型|说明
----|---|---
-status | int | 完成状态，0：未完成，1：进行中，2：已完成。
+userId | String | 用户id。
+status | int | 状态码。0代表未被接受，1代表正在进行，2代表已完成。
 pageId | int | 页数，最小为1。
 
 编码格式：application/x-www-form-urlencoded
