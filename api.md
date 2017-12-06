@@ -78,6 +78,16 @@
 
 - [确认任务完成](#确认任务完成)
 
+### 任务评论
+
+- [发布任务评论](#添加评论)
+
+- [删除任务评论](#删除评论)
+
+- [查找任务的单条评论](#查找任务的单条评论)
+
+- [查找任务的所有评论](#查找任务的所有评论)
+
 ### 任务收藏
 
 - [添加收藏](#添加收藏)
@@ -959,6 +969,110 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
+## 任务评论
+
+## 发布任务评论
+
+方法名：/addTaskComment
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+taskComment | TaskComment | 任务评论扩展对象，必需字段：taskUserId,taskId,commentUserId,content。
+
+编码格式：application/json
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+commentId | int | 评论id。
+status | int | 可能取值：200,403：信息不全，拒绝请求；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 删除任务评论
+
+方法名：/deleteTaskComment
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+taskUserId | String | 任务发布者id。
+taskId | int | 任务id。
+commentUserId | String | 评论发布者id。
+commentId | int | 评论id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 查找任务的单条评论
+
+方法名：/findTaskComment
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+taskUserId | String | 任务发布者id。
+taskId | int | 任务id。
+commentUserId | String | 评论发布者id。
+commentId | int | 评论id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+comment | TaskCommentExtend | 任务评论扩展对象。
+status | int | 可能取值：200；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 查找任务的所有评论
+
+方法名：/findTaskCommentsByArticle
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+taskUserId | String | 任务发布者id。
+taskId | int | 任务id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+comments | TaskCommentExtend | 任务评论扩展对象集。
+status | int | 可能取值：200；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
 ## 任务收藏
 
 ## 添加收藏
@@ -1583,6 +1697,30 @@ summary | String | 简介。
 image | String | 图片组链接，用分号隔开，如"/a/1;/a/2;"。
 details | String | 详情。
 addressId | int | 地址id。
+
+### TaskComment
+名称|类型|说明
+---|---|---
+taskUserId | String | 任务发布者id。
+taskId | int | 任务id。
+commentUserId | String | 评论发布者id。
+commentId | int | 评论id。
+toUserId | String | 所回复的用户的id，如果此评论不是回复，此字段为null或""。
+content | String | 评论内容。
+time | long | 发布时间。
+
+### TaskCommentExtend
+名称|类型|说明
+---|---|---
+taskUserId | String | 任务发布者id。
+taskId | int | 任务id。
+commentUserId | String | 评论发布者id。
+commentId | int | 评论id。
+toUserId | String | 所回复的用户的id，如果此评论不是回复，此字段为null或""。
+content | String | 评论内容。
+time | long | 发布时间。
+username | String | 评论发布者用户名。
+toUsername | String | 评论回复目标的用户名。
 
 ### TaskCollection
 名称|类型|说明
