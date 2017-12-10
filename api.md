@@ -1236,7 +1236,7 @@ replyId | int | 回复id。
 
 名称|类型|说明
 ---|---|---
-reply | TaskReply | 任务回复对象。
+reply | TaskReplyExtend | 任务回复扩展对象。
 status | int | 可能取值：200；500。
 exception | String | 错误信息，status为200时无此字段。
 
@@ -1263,7 +1263,7 @@ commentId | String | 评论id。
 
 名称|类型|说明
 ---|---|---
-replys | TaskReply | 任务回复对象集合。
+replys | TaskReplyExtend | 任务回复扩展对象集合。
 status | int | 可能取值：200；500。
 exception | String | 错误信息，status为200时无此字段。
 
