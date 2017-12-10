@@ -88,6 +88,16 @@
 
 - [查找任务的所有评论](#查找任务的所有评论)
 
+### 任务评论的回复
+
+- [发布回复](#发布回复)
+
+- [删除回复](#删除回复)
+
+- [查找单条评论的单条回复](#查找单条评论的单条回复)
+
+- [查找单条评论的所有回复](#查找单条评论的所有回复)
+
 ### 任务收藏
 
 - [添加收藏](#添加收藏)
@@ -1149,6 +1159,116 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
+## 任务评论的回复
+
+## 发布回复
+
+方法名：/addTaskReply
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+taskReply | TaskReply | 任务回复对象。必需字段：taskUserId,taskId,commentUserId,commentId,replyUserId,content;不能为空，null
+
+编码格式：application/json
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+replyId | int | 回复id。
+status | int | 可能取值：200；403:"信息不全，拒绝请求"；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 删除回复
+
+方法名：/deleteTaskReply
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+taskUserId | String | 任务发布者id。
+taskId | int | 任务id。
+commentUserId | String | 评论发布者id。
+commentId | String | 评论id。
+replyUserId | String | 回复发布者id。
+replyId | int | 回复id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200；403:"信息不全，拒绝请求"；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 查找单条评论的单条回复
+
+方法名：/findTaskReply
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+taskUserId | String | 任务发布者id。
+taskId | int | 任务id。
+commentUserId | String | 评论发布者id。
+commentId | String | 评论id。
+replyUserId | String | 回复发布者id。
+replyId | int | 回复id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+reply | TaskReply | 任务回复对象。
+status | int | 可能取值：200；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 查找单条评论的所有回复
+
+方法名：/findTaskReplyByComment
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+taskUserId | String | 任务发布者id。
+taskId | int | 任务id。
+commentUserId | String | 评论发布者id。
+commentId | String | 评论id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+replys | TaskReply | 任务回复对象集合。
+status | int | 可能取值：200；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
 ## 朋友圈
 
 ## 添加说说描述图
@@ -1705,7 +1825,6 @@ taskUserId | String | 任务发布者id。
 taskId | int | 任务id。
 commentUserId | String | 评论发布者id。
 commentId | int | 评论id。
-toUserId | String | 所回复的用户的id，如果此评论不是回复，此字段为null或""。
 content | String | 评论内容。
 time | long | 发布时间。
 
@@ -1716,11 +1835,37 @@ taskUserId | String | 任务发布者id。
 taskId | int | 任务id。
 commentUserId | String | 评论发布者id。
 commentId | int | 评论id。
-toUserId | String | 所回复的用户的id，如果此评论不是回复，此字段为null或""。
 content | String | 评论内容。
 time | long | 发布时间。
 username | String | 评论发布者用户名。
-toUsername | String | 评论回复目标的用户名。
+
+### TaskReply
+名称|类型|说明
+---|---|---
+taskUserId | String | 任务发布者id。
+taskId | int | 任务id。
+commentUserId | String | 评论发布者id。
+commentId | int | 评论id。
+replyUserId | String | 回复发布者id。
+replyId | int | 回复id。
+content | String | 评论内容。
+time | long | 发布时间。
+String | toUserId | 若回复的是评论主体，则此字段为空或null；若回复的是另一条回复，此字段为另一条回复发布人的id。
+
+### TaskReplyExtend
+名称|类型|说明
+---|---|---
+taskUserId | String | 任务发布者id。
+taskId | int | 任务id。
+commentUserId | String | 评论发布者id。
+commentId | int | 评论id。
+replyUserId | String | 回复发布者id。
+replyId | int | 回复id。
+content | String | 评论内容。
+time | long | 发布时间。
+String | toUserId | 若回复的是评论主体，则此字段为空或null；若回复的是另一条回复，此字段为另一条回复发布人的id。
+String | username | replyUserId对应的用户名。
+String | toUsername | toUserId对应的用户名。
 
 ### TaskCollection
 名称|类型|说明
