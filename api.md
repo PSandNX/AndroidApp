@@ -1052,7 +1052,8 @@ commentId | int | 评论id。
 
 名称|类型|说明
 ---|---|---
-comment | TaskCommentExtend | 任务评论扩展对象。
+comment | TaskCommentExtend | 任务评论。
+replys | TaskReplyExtend | 任务评论对应的回复集合。
 status | int | 可能取值：200；500。
 exception | String | 错误信息，status为200时无此字段。
 
@@ -1060,7 +1061,7 @@ exception | String | 错误信息，status为200时无此字段。
 
 ## 查找任务的所有评论
 
-方法名：/findTaskCommentsByArticle
+方法名：/findTaskComments
 
 HTTP方法：Post
 
@@ -1077,7 +1078,7 @@ taskId | int | 任务id。
 
 名称|类型|说明
 ---|---|---
-comments | TaskCommentExtend | 任务评论扩展对象集。
+commentsAndReplys | Map<String, Object> | Map集合，每个元素包含:"comment":单条任务评论；"replys":评论对应的回复集合。
 status | int | 可能取值：200；500。
 exception | String | 错误信息，status为200时无此字段。
 
