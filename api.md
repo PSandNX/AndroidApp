@@ -1839,6 +1839,7 @@ commentId | int | 评论id。
 content | String | 评论内容。
 time | long | 发布时间。
 username | String | 评论发布者用户名。
+head | String | 评论发布者的头像。
 
 ### TaskReply
 名称|类型|说明
