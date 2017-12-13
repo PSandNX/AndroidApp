@@ -108,6 +108,8 @@
 
 - [查找收藏状态](#查找收藏状态)
 
+- [查找收藏的任务](#查找收藏的任务)
+
 ### 朋友圈
 
 - [添加说说描述图](#添加说说描述图)
@@ -1164,7 +1166,7 @@ exception | String | 错误信息，status为200时无此字段。
 
 ## 查找收藏状态
 
-方法名：/findTaskCollection
+方法名：/findTaskCollectionStatus
 
 HTTP方法：Post
 
@@ -1188,6 +1190,29 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
+## 查找收藏的任务
+
+方法名：/findCollectdTasks
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 收藏者id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+tasks | TaskExtend | 任务扩展对象集合。
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
 ## 任务评论的回复
 
 ## 发布回复
