@@ -968,7 +968,7 @@ HTTP方法：Post
 名称|类型|说明
 ---|---|---
 campus | String | 校区。
-summary | String | 任务简介。
+summary | String | 搜索输入。
 pageId | int | 页数，最小为1。
 
 编码格式：application/x-www-form-urlencoded
