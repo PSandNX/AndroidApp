@@ -12,6 +12,10 @@
 
 ### 用户
 
+- [发送注册用验证短信](#发送注册用验证短信)
+
+- [核对注册用短信验证码](#核对注册用短信验证码)
+
 - [注册](#注册)
 
 - [登录](#登录)
@@ -235,6 +239,53 @@ exception | String | 错误信息，status为200时无此字段。
 编码格式：application/json
 
 ## 用户
+
+## 发送注册用验证短信
+
+方法名：/sendRegisterValidcode
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+phone | String | 手机号，用户id
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 核对注册用短信验证码
+
+方法名：/checkRegisterValidcode
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+code | String | 验证码。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+check | int | 1代表验证成功，0代表失败。
+status | int | 可能取值：200；403:验证码过期；500:验证码过期或未知错误。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
 
 ## 注册
 
