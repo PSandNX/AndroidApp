@@ -76,6 +76,8 @@
 
 - [根据校区、类别、状态查找任务，一次五篇](#根据校区类别状态查找任务一次五篇)
 
+- [根据任务简介模糊查找任务](#根据任务简介模糊查找任务)
+
 - [确认任务完成](#确认任务完成)
 
 ### 任务评论
@@ -941,6 +943,32 @@ HTTP方法：Post
 category | String | 类别。
 campus | String | 校区。
 status | int | 状态码。0代表未被接受，1代表正在进行，2代表已完成。
+pageId | int | 页数，最小为1。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+tasks | Task | Task数组，任务组。
+status | int | 可能取值：200,500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 根据任务简介模糊查找任务
+
+方法名：/researchTasks
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+campus | String | 校区。
+summary | String | 任务简介。
 pageId | int | 页数，最小为1。
 
 编码格式：application/x-www-form-urlencoded
