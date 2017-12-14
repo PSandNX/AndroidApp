@@ -845,7 +845,7 @@ HTTP方法：Post
 
 名称|类型|说明
 ---|---|---
-userId | String | 用户id。
+userId | String | 任务发布者id。
 taskId | int | 任务id。
 receivedUserId | String | 任务领取者id。
 
@@ -870,7 +870,7 @@ HTTP方法：Post
 
 名称|类型|说明
 ---|---|---
-userId | String | 用户id。
+userId | String | 任务发布者id。
 taskId | int | 任务id。
 receivedUserId | String | 任务领取者id。
 
