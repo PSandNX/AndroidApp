@@ -258,7 +258,7 @@ phone | String | 手机号，用户id
 
 名称|类型|说明
 ---|---|---
-status | int | 可能取值：200；500。
+status | int | 可能取值：200；403：信息无效，拒绝请求；500：无法发送验证码。
 exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
@@ -282,7 +282,7 @@ code | String | 验证码。
 名称|类型|说明
 ---|---|---
 check | int | 1代表验证成功，0代表失败。
-status | int | 可能取值：200；403:验证码过期；500:验证码过期或未知错误。
+status | int | 可能取值：200；4031:信息无效，拒绝请求；4032：验证码已过期；500:验证码过期或未知错误。
 exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
