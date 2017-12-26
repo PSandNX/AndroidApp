@@ -572,6 +572,7 @@ HTTP方法：Post
 名称|类型|说明
 ---|---|---
 name | String | 服务名称。
+userId | String | 用户id。
 
 编码格式：application/x-www-form-urlencoded
 
@@ -579,7 +580,7 @@ name | String | 服务名称。
 
 名称|类型|说明
 ---|---|---
-services | Service | Service集合，服务。
+services | Service | Service集合，校区对应的服务。
 status | int | 可能取值：200；500。
 exception | String | 错误信息，status为200时无此字段。
 
@@ -596,6 +597,7 @@ HTTP方法：Post
 名称|类型|说明
 ---|---|---
 category | String | 服务类别。
+userId | String | 用户id。
 
 编码格式：application/x-www-form-urlencoded
 
@@ -603,7 +605,7 @@ category | String | 服务类别。
 
 名称|类型|说明
 ---|---|---
-services | Service | Service集合，服务。
+services | Service | Service集合，校区对应的服务。
 status | int | 可能取值：200；500。
 exception | String | 错误信息，status为200时无此字段。
 
