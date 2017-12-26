@@ -342,9 +342,9 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
-## 查找用户信息
+## 发送改密用或找回密码用短信验证码
 
-方法名：/findUserById
+方法名：/sendChangeValidcode
 
 HTTP方法：Post
 
@@ -352,7 +352,8 @@ HTTP方法：Post
 
 名称|类型|说明
 ---|---|---
-id | String | 用户id。
+phone | String | 用户id。
+type | int | 1代表修改密码，2代表找回密码。
 
 编码格式：application/x-www-form-urlencoded
 
@@ -360,8 +361,58 @@ id | String | 用户id。
 
 名称|类型|说明
 ---|---|---
-user | User | 用户信息。
-status | int | 可能取值：200，500。
+status | int | 可能取值：200：验证成功；4031：信息无效，拒绝请求；4032：用户不存在；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 核对改密用或找回密码用短信验证码
+
+方法名：/checkChangeValidcode
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+phone | String | 用户id。
+type | int | 1代表修改密码，2代表找回密码。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200：验证成功；4031：信息无效，拒绝请求；4032：验证码已过期；500：验证码过期或未知错误。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 修改用户信息
+
+方法名：/updateUserInfo
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 必填。用户id。
+head | MultipartFile | 可选。图片，png或jpg格式。
+username | String | 可选。用户名。
+password | String | 可选。密码。修改密码前需要发送改密用或找回密码用短信验证码并核对。
+campus | String | 可选。校区。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200：验证成功；403：用户不存在；500：未知错误。
 exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
