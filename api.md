@@ -382,7 +382,7 @@ HTTP方法：Post
 
 名称|类型|说明
 ---|---|---
-phone | String | 用户id。
+code | String | 验证码。
 type | int | 1代表修改密码，2代表找回密码。
 
 编码格式：application/x-www-form-urlencoded
