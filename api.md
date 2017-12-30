@@ -90,6 +90,10 @@
 
 - [确认任务完成](#确认任务完成)
 
+- [查找进行中的任务交易](#查找进行中的任务交易)
+
+- [取消进行中的任务交易](#取消进行中的任务交易)
+
 ### 任务评论
 
 - [发布任务评论](#发布任务评论)
@@ -854,7 +858,13 @@ HTTP方法：Post
 
 名称|类型|说明
 ---|---|---
-task | Task | 必需字段：userId,category,value,summary,details；不能为空，NULL
+userId | String | 必需。用户名。
+category | String | 必需。类别。
+summary | String | 必需。简介。
+details | String | 必需。详细。
+value | BigDecimal | 必需。悬赏价格，不为0，精确到小数点后两位（scale为2）。
+addressId | String | 不必需。地址。
+taskImages | List<MultipartFile> | 不必需。描述图。
 
 编码格式：application/json
 
@@ -862,8 +872,8 @@ task | Task | 必需字段：userId,category,value,summary,details；不能为�
 
 名称|类型|说明
 ---|---|---
-taskId | int | 任务id。
-status | int | 可能取值：200,403:信息不全，拒绝请求,500。
+orderString | int | 用于给客户端请求调出支付宝，无需再做处理。
+status | int | 可能取值：200；4031:信息不全或无效，拒绝请求；4032：有悬赏交易未完成，无法新建交易；500。
 exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
@@ -1115,6 +1125,53 @@ taskId | int | 任务id。
 名称|类型|说明
 ---|---|---
 status | int | 可能取值：200,403：信息不全，拒绝请求；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 查找进行中的任务交易
+
+方法名：/findTaskTradeNotFinished
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+taskTrade | TaskTrade | 正在进行中的任务交易。
+status | int | 可能取值：200；4031：信息不全，拒绝请求；4032：用户不存在；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 取消进行中的任务交易
+
+方法名：/cancelTaskTrade
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200；4031：信息不全，拒绝请求；4032：用户不存在；500。
 exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
