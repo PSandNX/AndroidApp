@@ -872,7 +872,7 @@ taskImages | List<MultipartFile> | 不必需。描述图。
 
 名称|类型|说明
 ---|---|---
-orderString | int | 用于给客户端请求调出支付宝，无需再做处理。
+orderString | String | 用于给客户端请求调出支付宝，无需再做处理。
 status | int | 可能取值：200；4031:信息不全或无效，拒绝请求；4032：有悬赏交易未完成，无法新建交易；500。
 exception | String | 错误信息，status为200时无此字段。
 
