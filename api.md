@@ -2032,12 +2032,29 @@ taskId | int | 任务编号。
 receivedUserId | String | 任务领取者id。
 category | String | 类别。
 time | long | 发布时间。
-status | int | 0代表未被接受，1代表正在进行，2代表已完成。
+status | int | 0代表未被接受，1代表正在进行，2代表已完成，3代表已取消。
 value | BigDecimal | 悬赏金。
 summary | String | 简介。
 image | String | 图片组链接，用分号隔开，如"/a/1;/a/2;"。
 details | String | 详情。
 addressId | int | 地址id。
+
+### TaskExtend
+名称|类型|说明
+---|---|---
+userId | String | 用户编号，手机号，融云账号。
+taskId | int | 任务编号。
+receivedUserId | String | 任务领取者id。
+category | String | 类别。
+time | long | 发布时间。
+status | int | 0代表未被接受，1代表正在进行，2代表已完成，3代表已取消。
+value | BigDecimal | 悬赏金。
+summary | String | 简介。
+image | String | 图片组链接，用分号隔开，如"/a/1;/a/2;"。
+details | String | 详情。
+addressId | int | 地址id。
+username | String | 用户名。
+head | String | 头像。
 
 ### TaskComment
 名称|类型|说明
@@ -2104,6 +2121,17 @@ articleId | int | 说说id。
 content | String | 文字内容。
 image | String | 图片组链接，用分号隔开，如"/a/1;/a/2;"。
 time | long | 发布时间。
+
+### ArticleExtend
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+articleId | int | 说说id。
+content | String | 文字内容。
+image | String | 图片组链接，用分号隔开，如"/a/1;/a/2;"。
+time | long | 发布时间。
+username | String | 用户名。
+head | String | 头像。
 
 ### ArticleCollection
 名称|类型|说明
