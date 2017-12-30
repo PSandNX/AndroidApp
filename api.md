@@ -70,6 +70,8 @@
 
 - [发布任务](#发布任务)
 
+- [二次发布任务](#二次发布任务)
+
 - [删除任务](#删除任务)
 
 - [领取任务](#领取任务)
@@ -878,7 +880,31 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
-如果有描述图，先调用此方法再调用addTaskImages方法。
+## 二次发布任务
+
+方法名：/addLostTask
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 必需。用户名。
+
+编码格式：application/json
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+orderString | String | 用于给客户端请求调出支付宝，无需再做处理。
+status | int | 可能取值：200；403:信息不全或无效，拒绝请求；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+用于用户完成未完成的任务交易。
 
 ## 删除任务
 
