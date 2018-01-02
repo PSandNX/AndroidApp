@@ -46,6 +46,18 @@
 
 - [根据category查找服务](#根据category查找服务)
 
+- [根据服务名模糊查找校区内的服务](#根据服务名模糊查找校区内的服务)
+
+- [添加服务申请](#添加服务申请)
+
+- [更新服务申请](#更新服务申请)
+
+- [查找服务申请](#查找服务申请)
+
+- [根据开发者id查找服务申请](#根据开发者id查找服务申请)
+
+- [删除服务申请](#删除服务申请)
+
 ### 好友关系
 
 - [发送好友请求](#发送好友请求)
@@ -622,6 +634,166 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
+## 根据服务名模糊查找校区内的服务
+
+方法名：/fuzzySearchServiceByName
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+name | String | 服务名称。
+userId | String | 用户id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+services | Service(List) | Service集合，校区对应的服务。
+status | int | 可能取值：200；403:信息不全，拒绝请求；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 添加服务申请
+
+方法名：/addServiceApplication
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+icon | MultipartFile | 必需。服务图标。
+name | String | 必需。服务名。
+category | String | 必需。服务类别。
+summary | String | 必需。服务简介。
+school | String | 必需。服务所属学校。
+campus | String | 必需。服务所属校区。
+url | String | 必需。服务链接。
+developer | String | 必需。开发者id（属于用户id）。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+serviceId | int | 新增的服务申请的id。
+status | int | 可能取值：200；403:信息不全，拒绝请求；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 更新服务申请
+
+方法名：/updateServiceApplication
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+icon | MultipartFile | 可选。服务图标。
+name | String | 可选。服务名。
+category | String | 可选。服务类别。
+summary | String | 可选。服务简介。
+school | String | 可选。服务所属学校。
+campus | String | 可选。服务所属校区。
+url | String | 可选。服务链接。
+developer | String | 必需。开发者id（属于用户id）。
+serviceId | int | 必需。服务申请id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200；403:信息不全，拒绝请求；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+
+## 查找服务申请
+
+方法名：/findServiceApplication
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+developer | String | 开发者id（属于用户id）。
+serviceId | int | 服务申请id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+serviceApplication | Service | 服务申请。
+status | int | 可能取值：200；403:信息不全或无效，拒绝请求；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 根据开发者id查找服务申请
+
+方法名：/findServiceApplicationByDeveloper
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+developer | String | 开发者id（属于用户id）。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+serviceApplications | Service(List) | 服务申请对象集合。
+status | int | 可能取值：200；403:信息不全，拒绝请求；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 删除服务申请
+
+方法名：/deleteServiceApplication
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+developer | String | 开发者id（属于用户id）。
+serviceId | int | 服务申请id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200；403:信息不全或无效，拒绝请求；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
 
 ## 好友关系
 
