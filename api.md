@@ -505,6 +505,7 @@ transferAmount | BigDecimal | 转账金额。
 
 名称|类型|说明
 ---|---|---
+orderString | String | 订单信息。
 status | int | 可能取值：200；4031：信息不全或无效，拒绝请求；4032：转账发起人或转账目标不存在；500。
 exception | String | 错误信息，status为200时无此字段。
 
