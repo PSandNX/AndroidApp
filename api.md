@@ -48,15 +48,15 @@
 
 - [根据服务名模糊查找校区内的服务](#根据服务名模糊查找校区内的服务)
 
-- [发送添加服务的申请](#添加服务申请)
+- [发送添加服务的申请](#发送添加服务的申请)
 
-- [更新已发送的添加服务的申请](#更新服务申请)
+- [更新已发送的添加服务的申请](#更新已发送的添加服务的申请)
 
-- [查找已发送的添加服务的申请](#查找服务申请)
+- [查找已发送的添加服务的申请](#查找已发送的添加服务的申请)
 
-- [根据开发者id查找已发送的添加服务的申请](#根据开发者id查找服务申请)
+- [根据开发者id查找已发送的添加服务的申请](#根据开发者id查找已发送的添加服务的申请)
 
-- [删除已发送的添加服务的申请](#删除服务申请)
+- [删除已发送的添加服务的申请](#删除已发送的添加服务的申请)
 
 ### 好友关系
 
@@ -660,7 +660,7 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
-## 添加服务申请
+## 发送添加服务的申请
 
 方法名：/addServiceApplication
 
@@ -691,7 +691,7 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
-## 更新服务申请
+## 更新已发送的添加服务的申请
 
 方法名：/updateServiceApplication
 
@@ -723,7 +723,7 @@ exception | String | 错误信息，status为200时无此字段。
 编码格式：application/json
 
 
-## 查找服务申请
+## 查找已发送的添加服务的申请
 
 方法名：/findServiceApplication
 
@@ -748,7 +748,7 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
-## 根据开发者id查找服务申请
+## 根据开发者id查找已发送的添加服务的申请
 
 方法名：/findServiceApplicationByDeveloper
 
@@ -772,7 +772,7 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
-## 删除服务申请
+## 删除已发送的添加服务的申请
 
 方法名：/deleteServiceApplication
 
