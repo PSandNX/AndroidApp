@@ -36,6 +36,8 @@
 
 ### 服务
 
+- [删除服务](#删除服务)
+
 - [更新用户订阅的服务](#更新用户订阅的服务)
 
 - [查找用户订阅的服务](#查找用户订阅的服务)
@@ -514,6 +516,29 @@ exception | String | 错误信息，status为200时无此字段。
 编码格式：application/json
 
 ## 服务
+
+## 删除服务
+
+方法名：/deleteService
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+serviceId | int | 服务id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200；403：信息无效，拒绝请求；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
 
 ## 更新用户订阅的服务
 
