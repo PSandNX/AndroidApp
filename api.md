@@ -56,7 +56,7 @@
 
 - [根据开发者id查找已发送的添加服务的申请](#根据开发者id查找已发送的添加服务的申请)
 
-- [删除已发送的添加服务的申请](#删除已发送的添加服务的申请)
+- [撤回已发送的添加服务的申请](#撤回已发送的添加服务的申请)
 
 ### 好友关系
 
@@ -722,6 +722,7 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
+只能更新未处理的申请
 
 ## 查找已发送的添加服务的申请
 
@@ -772,7 +773,7 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
-## 删除已发送的添加服务的申请
+## 撤回已发送的添加服务的申请
 
 方法名：/deleteServiceApplication
 
@@ -795,6 +796,8 @@ status | int | 可能取值：200；403:信息不全或无效，拒绝请求；5
 exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
+
+只能撤回未处理的申请
 
 ## 好友关系
 
@@ -2372,3 +2375,4 @@ developer | String | 开发者。
 school | String | 学校。
 category | String | 服务类别。
 usedNumber | int | 使用量，热度。
+status | int | 状态码，0：申请未处理，1：申请已处理。
