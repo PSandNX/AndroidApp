@@ -34,6 +34,8 @@
 
 - [转账](#转账)
 
+- [提现](#提现)
+
 ### 服务
 
 - [删除服务](#删除服务)
@@ -511,6 +513,30 @@ transferAmount | BigDecimal | 转账金额。
 ---|---|---
 orderString | String | 订单信息。
 status | int | 可能取值：200；4031：信息不全或无效，拒绝请求；4032：转账发起人或转账目标不存在；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 提现
+
+方法名：/addCashApplication
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+cash | BigDecimal | 提现金额。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200；4031：信息不全或无效，拒绝请求；4032：用户不存在；4033：余额不足；500。
 exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
