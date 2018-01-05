@@ -672,7 +672,6 @@ HTTP方法：Post
 
 名称|类型|说明
 ---|---|---
-usedNumber | int | 服务热度（添加数）。
 serviceId | int | 服务id。
 
 编码格式：application/x-www-form-urlencoded
@@ -2400,5 +2399,5 @@ icon | String | 服务图标。
 developer | String | 开发者。
 school | String | 学校。
 category | String | 服务类别。
-usedNumber | int | 使用量，热度。
+usedNumber | int | 热度（该服务被所有用户添加的次数）。
 status | int | 状态码，0：申请未处理，1：申请已处理。
