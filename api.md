@@ -32,9 +32,13 @@
 
 - [更新用户的常驻地址](#更新用户的常驻地址)
 
-- [转账](#转账)
+- [发红包](#发红包)
 
 - [提现](#提现)
+
+- [查找已完成的提现申请]（#查找已完成的提现申请）
+
+- [查找未完成的提现申请]（#查找未完成的提现申请）
 
 ### 服务
 
@@ -491,7 +495,7 @@ exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
 
-## 转账
+## 发红包
 
 方法名：/transferAccounts
 
@@ -537,6 +541,54 @@ cash | BigDecimal | 提现金额。
 名称|类型|说明
 ---|---|---
 status | int | 可能取值：200；4031：信息不全或无效，拒绝请求；4032：用户不存在；4033：余额不足；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 查找已审核的提现申请
+
+方法名：/findCashApplicationFinishedByUserId
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+cashApplications | Cash（List） | Cash集合。
+status | int | 可能取值：200；403：信息不全，拒绝请求；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 查找未审核的提现申请
+
+方法名：/findCashApplicationNotFinishedByUserId
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+cashApplications | Cash（List） | Cash集合。
+status | int | 可能取值：200；403：信息不全，拒绝请求；500。
 exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
@@ -2451,4 +2503,11 @@ developer | String | 开发者。
 school | String | 学校。
 category | String | 服务类别。
 usedNumber | int | 热度（该服务被所有用户添加的次数）。
-status | int | 状态码，0：申请未处理，1：申请已处理。
+status | int | 状态码，0：申请未处理，1：申请已通过，2：申请未通过
+
+### Cash
+名称|类型|说明
+---|---|---
+userId | String | 用户id。
+outTradeNo | String | 提现订单号。
+status | int | 提现状态，0：正在审核，1：申请已通过，2：申请未通过
