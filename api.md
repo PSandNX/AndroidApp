@@ -48,6 +48,8 @@
 
 - [根据服务名模糊查找校区内的服务](#根据服务名模糊查找校区内的服务)
 
+- [更新服务热度](#更新服务热度)
+
 - [发送添加服务的申请](#发送添加服务的申请)
 
 - [更新已发送的添加服务的申请](#更新已发送的添加服务的申请)
@@ -656,6 +658,30 @@ userId | String | 用户id。
 ---|---|---
 services | Service(List) | Service集合，校区对应的服务。
 status | int | 可能取值：200；403:信息不全，拒绝请求；500。
+exception | String | 错误信息，status为200时无此字段。
+
+编码格式：application/json
+
+## 更新服务热度
+
+方法名：/updateServiceUsedNumber
+
+HTTP方法：Post
+
+**参数**
+
+名称|类型|说明
+---|---|---
+usedNumber | int | 服务热度（添加数）。
+serviceId | int | 服务id。
+
+编码格式：application/x-www-form-urlencoded
+
+**返回值**
+
+名称|类型|说明
+---|---|---
+status | int | 可能取值：200；403:信息不全或无效，拒绝请求；500。
 exception | String | 错误信息，status为200时无此字段。
 
 编码格式：application/json
