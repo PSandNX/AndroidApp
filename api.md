@@ -2504,6 +2504,9 @@ school | String | 学校。
 category | String | 服务类别。
 usedNumber | int | 热度（该服务被所有用户添加的次数）。
 status | int | 状态码，0：申请未处理，1：申请已通过，2：申请未通过
+developerName | String | 开发者名字。
+url | String | 链接。
+campus | String | 校区。
 
 ### Cash
 名称|类型|说明
